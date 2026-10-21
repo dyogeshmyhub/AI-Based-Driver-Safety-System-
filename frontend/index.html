@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      const savedTheme = localStorage.getItem('driver-safety-theme');
+      document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+    </script>
     <title>Intelligent Driver Safety System</title>
   </head>
   <body>

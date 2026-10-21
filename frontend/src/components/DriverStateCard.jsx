@@ -11,6 +11,6 @@ const stateRows = [
   ['Mouth', (data) => data?.driver?.mouth ?? data?.mouth?.status],
 ];
 
-export default function DriverStateCard({ data }) {
-  return <section className="card"><div className="section-title"><span className="section-kicker">01</span><h2>Driver state</h2></div><div className="state-list">{stateRows.map(([label, getValue]) => <div className="state-row" key={label}><span>{label}</span><strong>{getValue(data) || 'Loading...'}</strong></div>)}</div></section>;
+export default function DriverStateCard({ data, backendOnline = true }) {
+  return <section className="card driver-state-card"><div className="section-title"><span className="section-kicker">01</span><h2>Driver state</h2></div><div className="state-list">{stateRows.map(([label, getValue]) => <div className="state-row" key={label}><span>{label}</span><strong>{getValue(data) ?? (backendOnline ? 'Awaiting data' : 'N/A')}</strong></div>)}</div></section>;
 }

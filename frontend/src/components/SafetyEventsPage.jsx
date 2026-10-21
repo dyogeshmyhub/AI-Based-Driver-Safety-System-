@@ -7,7 +7,7 @@ function formatDate(value) {
 export default function SafetyEventsPage({ events, filter, onFilter, loading, error }) {
   const visibleEvents = filter === 'ALL' ? events : events.filter((event) => {
     const severity = event.severity.toUpperCase();
-    return severity === filter || (filter === 'HIGH' && severity === 'DANGER');
+    return severity === filter || (filter === 'HIGH' && ['DANGER', 'DROWSY'].includes(severity));
   });
   return <section className="page-panel">
     <div className="page-heading"><div><p className="eyebrow">AUDIT / SAFETY EVENTS</p><h2>Safety events</h2><p>Signals written by the live SafetyEngine and persisted to SQLite.</p></div><div className="filter-bar" role="group" aria-label="Filter safety events">{filters.map((value) => <button key={value} className={`filter-button ${filter === value ? 'selected' : ''}`} onClick={() => onFilter(value)}>{value}</button>)}</div></div>
