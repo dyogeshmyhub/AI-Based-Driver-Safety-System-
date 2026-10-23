@@ -1,12 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { api } from './services/api';
 import { MonitoringSocket } from './services/websocket';
+import { ALARM_MODES, AlarmController, getAlarmMode } from './services/alarmController';
 import { formatDuration } from './utils/formatDuration';
 import {
   AIMetricsCard,
-  AlertPanel,
-  DriverStateCard,
-  EventsTable,
   Header,
   LiveMonitoringPage,
   SafetyEventsPage,
@@ -61,17 +59,67 @@ export default function App() {
   const [sessionsLoading, setSessionsLoading] = useState(false);
   const [eventsFilter, setEventsFilter] = useState('ALL');
   const [selectedSession, setSelectedSession] = useState(null);
-  const [theme, setTheme] = useState(() => (
-    window.localStorage.getItem('driver-safety-theme') === 'light' ? 'light' : 'dark'
-  ));
+  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || 'dark');
   const socketRef = useRef(null);
+  const alarmControllerRef = useRef(null);
+  const lastYawnCountRef = useRef(null);
+  const singleYawnPendingRef = useRef(false);
+  const repeatedYawnPendingRef = useRef(false);
+  const stoppingMonitoringRef = useRef(false);
+
+  if (!alarmControllerRef.current) alarmControllerRef.current = new AlarmController();
+
+  useEffect(() => () => {
+    alarmControllerRef.current?.dispose();
+  }, []);
+
+  useEffect(() => {
+    const controller = alarmControllerRef.current;
+    const driver = monitoring?.driver || {};
+    const mouthState = String(driver.mouth || monitoring?.mouth?.status || '').toUpperCase();
+    const mouthIsNormal = mouthState === 'CLOSED' || mouthState === 'MOUTH CLOSED' || mouthState === 'NORMAL';
+    const yawnCount = Number(driver.yawn_count ?? monitoring?.mouth?.yawn_count ?? 0);
+
+    if (!monitoring?.monitoring) {
+      controller.endMonitoring();
+      lastYawnCountRef.current = yawnCount;
+      singleYawnPendingRef.current = false;
+      repeatedYawnPendingRef.current = false;
+      stoppingMonitoringRef.current = false;
+      return;
+    }
+
+    if (stoppingMonitoringRef.current) return;
+
+    if (mouthIsNormal) {
+      singleYawnPendingRef.current = false;
+      repeatedYawnPendingRef.current = false;
+    }
+    if (lastYawnCountRef.current !== null && yawnCount > lastYawnCountRef.current && !mouthIsNormal) {
+      singleYawnPendingRef.current = yawnCount < 2;
+      repeatedYawnPendingRef.current = yawnCount >= 2;
+    }
+    lastYawnCountRef.current = yawnCount;
+
+    const mode = getAlarmMode({
+      monitoring: true,
+      eyeState: driver.eyes || monitoring?.eyes?.status,
+      drowsinessState: driver.drowsiness || monitoring?.drowsiness?.status,
+      yawnCount,
+      mouthState: mouthState,
+      singleYawnPending: singleYawnPendingRef.current,
+      repeatedYawnPending: repeatedYawnPendingRef.current,
+    });
+    controller.setMode(mode);
+  }, [monitoring]);
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, [view]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
     window.localStorage.setItem('driver-safety-theme', theme);
   }, [theme]);
 
@@ -180,6 +228,8 @@ export default function App() {
   const handleStart = async () => {
     setBusy(true);
     setActionError('');
+    stoppingMonitoringRef.current = false;
+    alarmControllerRef.current?.unlock();
     try {
       const result = await api.startMonitoring();
       if (!result.success) setActionError(result.message);
@@ -193,10 +243,13 @@ export default function App() {
   const handleStop = async () => {
     setBusy(true);
     setActionError('');
+    stoppingMonitoringRef.current = true;
+    alarmControllerRef.current?.endMonitoring();
     try {
       await api.stopMonitoring();
     } catch (error) {
       setActionError(error.message || 'Backend unavailable');
+      stoppingMonitoringRef.current = false;
     } finally {
       setBusy(false);
     }
@@ -254,7 +307,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="cockpit-safety" aria-label="Driver safety">
+      <section className="cockpit-safety" aria-label="Safety system">
         <div className="cockpit-column-heading"><span>SAFETY SYSTEM</span><span className={`monitoring-indicator ${monitoring?.monitoring ? 'active' : ''}`}><i />{monitoring?.monitoring ? 'MONITORING' : 'STANDBY'}</span></div>
         <SafetyScoreCard safety={monitoring?.safety} monitoring={Boolean(monitoring?.monitoring)} backendOnline={backendOnline} />
         <section className={`card risk-card ${monitoring?.safety?.risk_level?.toLowerCase() || 'unknown'}`}>
@@ -262,7 +315,6 @@ export default function App() {
           <strong>{monitoring?.safety?.risk_level || 'Awaiting data'}</strong>
           <p>{monitoring?.safety?.risk_level ? monitoring.safety.active_risks?.length ? monitoring.safety.active_risks.join(' / ') : 'No active risk signals' : 'Risk status is unavailable.'}</p>
         </section>
-        <DriverStateCard data={monitoring} backendOnline={backendOnline} />
       </section>
 
       <section className="cockpit-analytics" aria-label="AI analytics">
@@ -282,17 +334,6 @@ export default function App() {
         </section>
       </section>
 
-      <section className="cockpit-gauge" aria-label="Driver attention and recent alerts">
-        <section className="card categorical-gauge">
-          <div className="section-title"><span className="section-kicker">STATUS</span><h2>Attention level</h2></div>
-          <div className={`attention-gauge ${monitoring?.driver?.attention ? (/distract/i.test(monitoring.driver.attention) ? 'warning' : 'normal') : 'unknown'}`}>
-            <div><span>ATTENTION</span><strong>{monitoring?.driver?.attention || (backendOnline ? 'Awaiting data' : 'N/A')}</strong></div>
-          </div>
-          <p className="gauge-note">Live attention classification. No numeric distraction score is available.</p>
-          <AlertPanel data={monitoring} />
-          <EventsTable events={events} error={backendError} limit={3} />
-        </section>
-      </section>
     </div>
 
     <section className="cockpit-support" aria-label="Session and system information">

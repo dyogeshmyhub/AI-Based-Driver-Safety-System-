@@ -1,7 +1,7 @@
 {
   "planHash": "75acc26b490b5dd0a771c6d681466491d0ac51712dea25f7d3d7799d58c8fadd",
   "phase": "standalone",
-  "recordedAtUtc": "2026-10-19T06:22:03.4877408Z",
+  "recordedAtUtc": "2026-10-23T06:48:55.3560842Z",
   "retryCount": 3,
   "resetBaseline": false,
   "complete": true,
@@ -19,8 +19,8 @@
         "skipped": false,
         "skippedReason": null,
         "exitCode": 0,
-        "outputSample": "\r\n\u003E driver-safety-system-frontend@1.0.0 build\r\n\u003E vite build\r\n\r\n\u001B[36mvite v5.4.21 \u001B[32mbuilding for production...\u001B[36m\u001B[39m\r\ntransforming...\r\n\u001B[32m\u2713\u001B[39m 46 modules transformed.\r\nrendering chunks...\r\ncomputing gzip size...\r\n\u001B[2mdist/\u001B[22m\u001B[32mindex.html                 \u001B[39m\u001B[1m\u001B[2m  0.62 kB\u001B[22m\u001B[1m\u001B[22m\u001B[2m \u2502 gzip:  0.38 kB\u001B[22m\r\n\u001B[2mdist/\u001B[22m\u001B[35massets/index-Bss-QMu3.css  \u001B[39m\u001B[1m\u001B[2m 37.47 kB\u001B[22m\u001B[1m\u001B[22m\u001B[2m \u2502 gzip:  7.75 kB\u001B[22m\r\n\u001B[2mdist/\u001B[22m\u001B[36massets/index-DN1RNAMR.js   \u001B[39m\u001B[1m\u001B[2m174.46 kB\u001B[22m\u001B[1m\u001B[22m\u001B[2m \u2502 gzip: 53.88 kB\u001B[22m\r\n\u001B[32m\u2713 built in 3.04s\u001B[39m\r\n",
-        "durationMs": 8287
+        "outputSample": "\r\n\u003E driver-safety-system-frontend@1.0.0 build\r\n\u003E vite build\r\n\r\n\u001B[36mvite v5.4.21 \u001B[32mbuilding for production...\u001B[36m\u001B[39m\r\ntransforming...\r\n\u001B[32m\u2713\u001B[39m 47 modules transformed.\r\nrendering chunks...\r\ncomputing gzip size...\r\n\u001B[2mdist/\u001B[22m\u001B[32mindex.html                 \u001B[39m\u001B[1m\u001B[2m  0.82 kB\u001B[22m\u001B[1m\u001B[22m\u001B[2m \u2502 gzip:  0.46 kB\u001B[22m\r\n\u001B[2mdist/\u001B[22m\u001B[35massets/index-BT1XQ2LH.css  \u001B[39m\u001B[1m\u001B[2m 42.12 kB\u001B[22m\u001B[1m\u001B[22m\u001B[2m \u2502 gzip:  8.50 kB\u001B[22m\r\n\u001B[2mdist/\u001B[22m\u001B[36massets/index-D-cneoxc.js   \u001B[39m\u001B[1m\u001B[2m177.44 kB\u001B[22m\u001B[1m\u001B[22m\u001B[2m \u2502 gzip: 54.93 kB\u001B[22m\r\n\u001B[32m\u2713 built in 3.37s\u001B[39m\r\n",
+        "durationMs": 6457
       },
       {
         "name": "tests-pass",
@@ -31,13 +31,13 @@
         "skipped": false,
         "skippedReason": null,
         "exitCode": 0,
-        "outputSample": "\r\n\u003E driver-safety-system-frontend@1.0.0 test\r\n\u003E vitest run\r\n\r\n\r\n\u001B[1m\u001B[7m\u001B[36m RUN \u001B[39m\u001B[27m\u001B[22m \u001B[36mv2.1.9 \u001B[39m\u001B[90mc:/Users/D.Yogesh/Desktop/AI-Based Driver Safety System/driver-safety-system/frontend\u001B[39m\r\n\r\n \u001B[32m\u2713\u001B[39m src/utils/formatDuration.test.js \u001B[2m(\u001B[22m\u001B[2m3 tests\u001B[22m\u001B[2m)\u001B[22m\u001B[90m 6\u001B[2mms\u001B[22m\u001B[39m\r\n\r\n\u001B[2m Test Files \u001B[22m \u001B[1m\u001B[32m1 passed\u001B[39m\u001B[22m\u001B[90m (1)\u001B[39m\r\n\u001B[2m      Tests \u001B[22m \u001B[1m\u001B[32m3 passed\u001B[39m\u001B[22m\u001B[90m (3)\u001B[39m\r\n\u001B[2m   Start at \u001B[22m 11:51:58\r\n\u001B[2m   Duration \u001B[22m 1.64s\u001B[2m (transform 78ms, setup 0ms, collect 78ms, tests 6ms, environment 0ms, prepare 541ms)\u001B[22m\r\n\r\n",
-        "durationMs": 5404,
+        "outputSample": "\r\n\u003E driver-safety-system-frontend@1.0.0 test\r\n\u003E vitest run\r\n\r\n\r\n\u001B[1m\u001B[7m\u001B[36m RUN \u001B[39m\u001B[27m\u001B[22m \u001B[36mv2.1.9 \u001B[39m\u001B[90mc:/Users/D.Yogesh/Desktop/AI-Based Driver Safety System/driver-safety-system/frontend\u001B[39m\r\n\r\n \u001B[32m\u2713\u001B[39m src/utils/formatDuration.test.js \u001B[2m(\u001B[22m\u001B[2m3 tests\u001B[22m\u001B[2m)\u001B[22m\u001B[90m 10\u001B[2mms\u001B[22m\u001B[39m\r\n \u001B[32m\u2713\u001B[39m src/services/alarmController.test.js \u001B[2m(\u001B[22m\u001B[2m7 tests\u001B[22m\u001B[2m)\u001B[22m\u001B[90m 42\u001B[2mms\u001B[22m\u001B[39m\r\n\r\n\u001B[2m Test Files \u001B[22m \u001B[1m\u001B[32m2 passed\u001B[39m\u001B[22m\u001B[90m (2)\u001B[39m\r\n\u001B[2m      Tests \u001B[22m \u001B[1m\u001B[32m10 passed\u001B[39m\u001B[22m\u001B[90m (10)\u001B[39m\r\n\u001B[2m   Start at \u001B[22m 12:18:50\r\n\u001B[2m   Duration \u001B[22m 1.64s\u001B[2m (transform 115ms, setup 0ms, collect 219ms, tests 51ms, environment 1ms, prepare 992ms)\u001B[22m\r\n\r\n",
+        "durationMs": 5297,
         "testResults": {
           "testFramework": "vitest",
           "runnerDetectedFrom": "package_json",
-          "testsTotal": 3,
-          "testsPassed": 3,
+          "testsTotal": 10,
+          "testsPassed": 10,
           "testsFailed": 0,
           "testsSkipped": 0,
           "parseFailed": false
@@ -52,8 +52,8 @@
         "skipped": false,
         "skippedReason": null,
         "exitCode": null,
-        "outputSample": "HTTP 200\n\u003C!doctype html\u003E\r\n\u003Chtml lang=\u0022en\u0022\u003E\r\n  \u003Chead\u003E\n    \u003Cscript type=\u0022module\u0022\u003Eimport { injectIntoGlobalHook } from \u0022/@react-refresh\u0022;\ninjectIntoGlobalHook(window);\nwindow.$RefreshReg$ = () =\u003E {};\nwindow.$RefreshSig$ = () =\u003E (type) =\u003E type;\u003C/script\u003E\n\n    \u003Cscript type=\u0022module\u0022 src=\u0022/@vite/client\u0022\u003E\u003C/script\u003E\n\r\n    \u003Cmeta charset=\u0022UTF-8\u0022 /\u003E\r\n    \u003Cmeta name=\u0022viewport\u0022 content=\u0022width=device-width, initial-scale=1.0\u0022 /\u003E\r\n    \u003Cscript\u003E\r\n      const savedTheme = localStorage.getItem(\u0027driver-safety-theme\u0027);\r\n      document.documentElement.dataset.theme = savedTheme === \u0027light\u0027 ? \u0027light\u0027 : \u0027dark\u0027;\r\n    \u003C/script\u003E\r\n    \u003Ctitle\u003EIntelligent Driver Safety System\u003C/title\u003E\r\n  \u003C/head\u003E\r\n  \u003Cbody\u003E\r\n    \u003Cdiv id=\u0022root\u0022\u003E\u003C/div\u003E\r\n    \u003Cscript type=\u0022module\u0022 src=\u0022/src/main.jsx\u0022\u003E\u003C/script\u003E\r\n  \u003C/body\u003E\r\n\u003C/html\u003E\r\n\n--- server output ---\n\r\n\u003E driver-safety-system-frontend@1.0.0 dev\r\n\u003E vite --port 5174 --strictPort\r\n\r\n\r\n  \u001B[32m\u001B[1mVITE\u001B[22m v5.4.21\u001B[39m  \u001B[2mready in \u001B[0m\u001B[1m1020\u001B[22m\u001B[2m\u001B[0m ms\u001B[22m\r\n\r\n  \u001B[32m\u279C\u001B[39m  \u001B[1mLocal\u001B[22m:   \u001B[36mhttp://localhost:\u001B[1m5174\u001B[22m/\u001B[39m\r\n  \u001B[32m\u279C\u001B[39m  \u001B[1mNetwork\u001B[22m: \u001B[36mhttp://192.168.120.1:\u001B[1m5174\u001B[22m/\u001B[39m\r\n  \u001B[32m\u279C\u001B[39m  \u001B[1mNetwork\u001B[22m: \u001B[36mhttp://192.168.4.1:\u001B[1m5174\u001B[22m/\u001B[39m\r\n  \u001B[32m\u279C\u001B[39m  \u001B[1mNetwork\u001B[22m: \u001B[36mhttp://172.20.10.7:\u001B[1m5174\u001B[22m/\u001B[39m\r\n",
-        "durationMs": 3003
+        "outputSample": "HTTP 200\n\u003C!doctype html\u003E\r\n\u003Chtml lang=\u0022en\u0022\u003E\r\n  \u003Chead\u003E\n    \u003Cscript type=\u0022module\u0022\u003Eimport { injectIntoGlobalHook } from \u0022/@react-refresh\u0022;\ninjectIntoGlobalHook(window);\nwindow.$RefreshReg$ = () =\u003E {};\nwindow.$RefreshSig$ = () =\u003E (type) =\u003E type;\u003C/script\u003E\n\n    \u003Cscript type=\u0022module\u0022 src=\u0022/@vite/client\u0022\u003E\u003C/script\u003E\n\r\n    \u003Cmeta charset=\u0022UTF-8\u0022 /\u003E\r\n    \u003Cmeta name=\u0022viewport\u0022 content=\u0022width=device-width, initial-scale=1.0\u0022 /\u003E\r\n    \u003Cmeta name=\u0022description\u0022 content=\u0022ByteArray driver safety monitoring dashboard.\u0022 /\u003E\r\n    \u003Cscript\u003E\r\n      const savedTheme = localStorage.getItem(\u0027driver-safety-theme\u0027);\r\n      const systemTheme = window.matchMedia(\u0027(prefers-color-scheme: dark)\u0027).matches ? \u0027dark\u0027 : \u0027light\u0027;\r\n      document.documentElement.dataset.theme = savedTheme === \u0027light\u0027 || savedTheme === \u0027dark\u0027 ? savedTheme : systemTheme;\r\n    \u003C/script\u003E\r\n    \u003Ctitle\u003EByteArray\u003C/title\u003E\r\n  \u003C/head\u003E\r\n  \u003Cbody\u003E\r\n    \u003Cdiv id=\u0022root\u0022\u003E\u003C/div\u003E\r\n    \u003Cscript type=\u0022module\u0022 src=\u0022/src/main.jsx\u0022\u003E\u003C/script\u003E\r\n  \u003C/body\u003E\r\n\u003C/html\u003E\r\n\n--- server output ---\n\r\n\u003E driver-safety-system-frontend@1.0.0 dev\r\n\u003E vite --port 5174 --strictPort\r\n\r\n\r\n  \u001B[32m\u001B[1mVITE\u001B[22m v5.4.21\u001B[39m  \u001B[2mready in \u001B[0m\u001B[1m1072\u001B[22m\u001B[2m\u001B[0m ms\u001B[22m\r\n\r\n  \u001B[32m\u279C\u001B[39m  \u001B[1mLocal\u001B[22m:   \u001B[36mhttp://localhost:\u001B[1m5174\u001B[22m/\u001B[39m\r\n  \u001B[32m\u279C\u001B[39m  \u001B[1mNetwork\u001B[22m: \u001B[36mhttp://192.168.120.1:\u001B[1m5174\u001B[22m/\u001B[39m\r\n  \u001B[32m\u279C\u001B[39m  \u001B[1mNetwork\u001B[22m: \u001B[36mhttp://192.168.4.1:\u001B[1m5174\u001B[22m/\u001B[39m\r\n  \u001B[32m\u279C\u001B[39m  \u001B[1mNetwork\u001B[22m: \u001B[36mhttp://172.20.10.7:\u001B[1m5174\u001B[22m/\u001B[39m\r\n",
+        "durationMs": 2910
       }
     ],
     "executions": [

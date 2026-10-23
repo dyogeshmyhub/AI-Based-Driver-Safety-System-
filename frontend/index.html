@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ByteArray driver safety monitoring dashboard." />
     <script>
       const savedTheme = localStorage.getItem('driver-safety-theme');
-      document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme;
     </script>
-    <title>Intelligent Driver Safety System</title>
+    <title>ByteArray</title>
   </head>
   <body>
     <div id="root"></div>
